@@ -5,4 +5,3 @@ const Nav = () => {
 };
 
 export default Nav;
-Nav;

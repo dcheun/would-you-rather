@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import LoadingBar from "react-redux-loading";
+import { handleInitialData } from "../actions/shared";
 import Nav from "./Nav";
 import Leaderboard from "../screens/Leaderboard";
 import Dashboard from "../screens/Dashboard";
@@ -10,13 +12,14 @@ import QuestionDetail from "../screens/QuestionDetail";
 
 class App extends Component {
   componentDidMount() {
-    //todo: dispatch initial data.
+    this.props.dispatch(handleInitialData());
   }
 
   render() {
     return (
       <Router>
         <>
+          <LoadingBar />
           <div className="container">
             <Nav />
             <div>
@@ -33,4 +36,10 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+function mapStateToProps({ authedUser }) {
+  return {
+    loading: authedUser === null,
+  };
+}
+
+export default connect(mapStateToProps)(App);
