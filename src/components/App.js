@@ -22,7 +22,7 @@ class App extends Component {
           <LoadingBar />
           <div className="container">
             <Nav />
-            <div>
+            <div className="screen">
               <Route path="/" exact component={Dashboard} />
               <Route path="/leaderboard" component={Leaderboard} />
               <Route path="/signin" component={SignIn} />

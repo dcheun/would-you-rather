@@ -1,10 +1,19 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
-const NewQuestion = (props) => {
+const NewQuestion = ({ authedUser }) => {
+  if (!authedUser) {
+    return <Redirect to="/signin" />;
+  }
+
   return <div>NewQuestion</div>;
 };
 
-NewQuestion.propTypes = {};
+const mapStateToProps = ({ authedUser }) => {
+  return {
+    authedUser,
+  };
+};
 
-export default NewQuestion;
+export default connect(mapStateToProps)(NewQuestion);
