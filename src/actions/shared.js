@@ -10,6 +10,7 @@ export const handleInitialData = () => async (dispatch) => {
     const { users, questions } = await getInitialData();
     dispatch(receiveUsers(users));
     dispatch(receiveQuestions(questions));
+    dispatch(setAuthedUser("tylermcginnis"));
     dispatch(hideLoading());
   } catch (error) {
     console.log(error);

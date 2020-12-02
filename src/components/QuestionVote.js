@@ -14,14 +14,13 @@ export class QuestionVote extends Component {
     }));
   };
 
-  handleSubmit = async (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
 
     const { value } = this.state;
-    const { question, dispatch, history } = this.props;
-    console.log(this.props);
+    const { question, dispatch } = this.props;
 
-    await dispatch(handleSaveQuestionAnswer(question.id, value));
+    dispatch(handleSaveQuestionAnswer(question.id, value));
   };
 
   render() {

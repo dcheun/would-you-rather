@@ -1,6 +1,6 @@
 import { showLoading, hideLoading } from "react-redux-loading";
 import { saveQuestion, saveQuestionAnswer } from "../apis/api";
-import { saveUserAns, SAVE_USER_ANS } from "./users";
+import { addUserQuestion, saveUserAns } from "./users";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ADD_QUESTION = "ADD_QUESTION";
@@ -33,6 +33,7 @@ export const handleAddQuestion = (optionOneText, optionTwoText) => async (
       author: authedUser,
     });
     dispatch(addQuestion(question));
+    dispatch(addUserQuestion(question));
   } catch (err) {
     console.log(err);
   }

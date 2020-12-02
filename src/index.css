@@ -183,7 +183,7 @@ h2.ui.header {
 }
 
 .card-section {
-  padding: 10px;
+  padding: 1rem;
 }
 
 .card-container {
@@ -203,6 +203,58 @@ h2.ui.header {
   min-width: 30rem;
 }
 
+.card-form-container {
+  flex-grow: 1;
+}
+
+.card-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-hdr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #dad7d7;
+}
+
+.card-hdr h2 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-text-input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.decor-container {
+  margin-bottom: 1rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.decor-container span {
+  padding: 0 1rem;
+  background-color: white;
+}
+
+.decor-line {
+  position: absolute;
+  border: 1px solid #dad7d7;
+  width: 100%;
+  z-index: -1;
+}
+
+.new-question button {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .plr-20 {
   padding-left: 20px;
   padding-right: 20px;
@@ -220,14 +272,6 @@ h2.ui.header {
   background-color: #eeeeee;
 }
 
-.card-form-container {
-  flex-grow: 1;
-}
-
-.card-form {
-  display: flex;
-  flex-direction: column;
-}
 
 #optionOne {
   margin-bottom: 1rem;

@@ -1,14 +1,85 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { handleAddQuestion } from "../actions/questions";
 
-const NewQuestion = ({ authedUser }) => {
-  if (!authedUser) {
-    return <Redirect to="/signin" />;
+export class NewQuestion extends Component {
+  state = {
+    optionOneText: "",
+    optionTwoText: "",
+    submitted: false,
+  };
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState(() => ({
+      [name]: value,
+    }));
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { optionOneText, optionTwoText } = this.state;
+    const { dispatch } = this.props;
+
+    dispatch(handleAddQuestion(optionOneText, optionTwoText));
+
+    this.setState(() => ({
+      submitted: true,
+    }));
+  };
+
+  render() {
+    const { optionOneText, optionTwoText, submitted } = this.state;
+    const { authedUser } = this.props;
+
+    if (!authedUser) {
+      return <Redirect to="/signin" />;
+    }
+
+    if (submitted) {
+      return <Redirect to="/" />;
+    }
+
+    return (
+      <div className="card new-question">
+        <div className="card-hdr">
+          <h2>Create New Question</h2>
+        </div>
+        <div className="card-section">
+          <p>Complete the question:</p>
+          <h3>Would you rather...</h3>
+          <form className="card-form" onSubmit={this.handleSubmit}>
+            <input
+              className="form-text-input"
+              type="text"
+              placeholder="Enter Option One Text Here"
+              name="optionOneText"
+              value={optionOneText}
+              onChange={this.handleChange}
+              required
+            />
+            <div className="decor-container">
+              <span>OR</span>
+              <div className="decor-line"></div>
+            </div>
+            <input
+              className="form-text-input"
+              type="text"
+              placeholder="Enter Option Two Text Here"
+              name="optionTwoText"
+              value={optionTwoText}
+              onChange={this.handleChange}
+              required
+            />
+            <button className="btn btn-teal fluid">Submit</button>
+          </form>
+        </div>
+      </div>
+    );
   }
-
-  return <div>NewQuestion</div>;
-};
+}
 
 const mapStateToProps = ({ authedUser }) => {
   return {
