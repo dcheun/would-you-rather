@@ -20,15 +20,13 @@ class App extends Component {
       <Router>
         <>
           <LoadingBar />
-          <div className="container">
-            <Nav />
-            <div className="screen">
-              <Route path="/" exact component={Dashboard} />
-              <Route path="/leaderboard" component={Leaderboard} />
-              <Route path="/signin" component={SignIn} />
-              <Route path="/add" component={NewQuestion} />
-              <Route path="/questions/:id" component={QuestionDetail} />
-            </div>
+          <Nav />
+          <div className="screen">
+            <Route path="/" exact component={Dashboard} />
+            <Route path="/leaderboard" component={Leaderboard} />
+            <Route path="/signin" component={SignIn} />
+            <Route path="/add" component={NewQuestion} />
+            <Route path="/questions/:id" component={QuestionDetail} />
           </div>
         </>
       </Router>

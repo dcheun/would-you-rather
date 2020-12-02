@@ -2,9 +2,12 @@ html, body, #root {
   height: 100%;
 }
 
-body {
+body, p {
   margin: 0;
   padding: 0;
+}
+
+body {
   font-family: sans-serif;
   color: #252525;
 }
@@ -17,9 +20,9 @@ a {
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  /* height: 100%; */
+  /* display: flex; */
+  /* flex-direction: column; */
 }
 
 
@@ -88,15 +91,23 @@ a {
 
 .screen {
   display: flex;
-  flex-grow: 1;
+  /* flex-grow: 1; */
 }
 
 .active {
   font-weight: bold;
 }
 
+hr {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  border-top: 0.2rem solid #00b5ad;
+}
+
 .nav {
-  padding: 10px;
+  padding-top: 0.8rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
 }
 
 .nav-items {
@@ -128,7 +139,7 @@ li {
 
 .avatar {
   height: 50px;
-  border-radius: 25px;
+  border-radius: 50%;
   margin: 10px;
 }
 
@@ -142,6 +153,10 @@ li {
 
 .avatar-mini {
   height: 30px;
+}
+
+.avatar-large {
+  height: 10rem;
 }
 
 .column {
@@ -172,11 +187,82 @@ h2.ui.header {
 }
 
 .card-container {
-  padding: 0 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.card-q-body {
+  display: flex;
+}
+
+.card-q-body img {
+  align-self: center;
+}
+
+.card.question {
+  min-width: 30rem;
+}
+
+.plr-20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.pb-1 {
+  padding-bottom: 1rem;
+}
+
+.ml-1 {
+  margin-left: 1rem;
 }
 
 .bg-gray {
   background-color: #eeeeee;
+}
+
+.card-form-container {
+  flex-grow: 1;
+}
+
+.card-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#optionOne {
+  margin-bottom: 1rem;
+}
+
+.q-option {
+  border: 1px solid rgba(0,0,0,.5);
+  padding: 1rem;
+  border-radius: 0.2rem;
+  position: relative;
+}
+
+.q-option-vote {
+  border: 1px solid #007c7c;
+  background-color: rgba(0,181,173,.2);
+}
+
+.q-option-vote h3 {
+  color: #007c7c;
+}
+
+.q-option-vote-badge {
+  background-color: rgb(218, 167, 0);
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  height: 3.1rem;
+  width: 3.1rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
 }
 
 select {
@@ -193,3 +279,23 @@ select option {
 .placeholder {
   color: #636c72;
 }
+
+.pct-bar {
+  /* border: 1px solid black; */
+  background-color: #cfd3ce;
+  border-radius: 0.3rem;
+  width: 100%;
+  height: 2rem;
+  margin-bottom: 1rem;
+}
+
+.pct-bar-value {
+  height: 100%;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #009c95;
+  color: white;
+}
+

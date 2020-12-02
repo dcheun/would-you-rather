@@ -11,44 +11,47 @@ const Nav = ({ signedInUser, dispatch }) => {
   };
 
   return (
-    <nav className="nav">
-      <div className="nav-items">
-        <ul>
-          <li>
-            <NavLink to="/" exact activeClassName="active">
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/add" activeClassName="active">
-              New Question
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/leaderboard" activeClassName="active">
-              Leader Board
-            </NavLink>
-          </li>
-        </ul>
-        {signedInUser && (
+    <>
+      <nav className="nav container">
+        <div className="nav-items">
           <ul>
-            <li>Hello, {signedInUser.name}</li>
-            <li className="avatar-li">
-              <img
-                src={signedInUser.avatarURL}
-                alt={`Avatar of ${signedInUser.name}`}
-                className="avatar avatar-mini"
-              />
+            <li>
+              <NavLink to="/" exact activeClassName="active">
+                Home
+              </NavLink>
             </li>
             <li>
-              <div className="btn-logout" onClick={handleLogout}>
-                Logout
-              </div>
+              <NavLink to="/add" activeClassName="active">
+                New Question
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/leaderboard" activeClassName="active">
+                Leader Board
+              </NavLink>
             </li>
           </ul>
-        )}
-      </div>
-    </nav>
+          {signedInUser && (
+            <ul>
+              <li>Hello, {signedInUser.name}</li>
+              <li className="avatar-li">
+                <img
+                  src={signedInUser.avatarURL}
+                  alt={`Avatar of ${signedInUser.name}`}
+                  className="avatar avatar-mini"
+                />
+              </li>
+              <li>
+                <div className="btn-logout" onClick={handleLogout}>
+                  Logout
+                </div>
+              </li>
+            </ul>
+          )}
+        </div>
+      </nav>
+      <hr />
+    </>
   );
 };
 

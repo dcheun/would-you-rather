@@ -8,7 +8,7 @@ export class SignIn extends Component {
   };
 
   handleChange = (e) => {
-    const value = e.target.value;
+    const { value } = e.target;
     this.setState(() => ({
       value,
     }));
@@ -40,7 +40,7 @@ export class SignIn extends Component {
             <h2 className="ui teal header">Sign in</h2>
           </div>
           <div className="card-section">
-            <form className="card-container" onSubmit={this.handleSubmit}>
+            <form className="card-section" onSubmit={this.handleSubmit}>
               <select
                 className={value ? "" : "placeholder"}
                 value={value}
