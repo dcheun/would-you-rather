@@ -59,7 +59,6 @@ export const handleSaveQuestionAnswer = (qid, answer) => async (
     qid,
     answer,
   };
-  console.log("info: ", info);
   dispatch(showLoading());
   try {
     await saveQuestionAnswer(info);

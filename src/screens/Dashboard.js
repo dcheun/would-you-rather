@@ -9,6 +9,11 @@ export class Dashboard extends Component {
 
   handleTabClick = (e) => {
     const { id } = e.target;
+    const { authedUser, history } = this.props;
+
+    if (!authedUser && id === "answered") {
+      history.push("/signin");
+    }
 
     this.setState(() => ({
       activeTab: id,
@@ -17,16 +22,7 @@ export class Dashboard extends Component {
 
   render() {
     const { activeTab } = this.state;
-    const {
-      answeredQuestionIds,
-      unansweredQuestionIds,
-      authedUser,
-      history,
-    } = this.props;
-
-    if (!authedUser && activeTab === "answered") {
-      history.push("/signin");
-    }
+    const { answeredQuestionIds, unansweredQuestionIds } = this.props;
 
     return (
       <div className="card">
@@ -50,7 +46,7 @@ export class Dashboard extends Component {
             Answered Questions
           </div>
         </div>
-        <div className="p-0-5">
+        <div className="p-05">
           <QuestionList
             questionIds={
               activeTab === "answered"
@@ -66,11 +62,13 @@ export class Dashboard extends Component {
 
 const mapStateToProps = ({ authedUser, questions, users }) => {
   const answeredQuestionIds = users[authedUser]
-    ? Object.keys(users[authedUser].answers)
+    ? Object.keys(users[authedUser].answers).sort(
+        (a, b) => questions[b].timestamp - questions[a].timestamp
+      )
     : [];
-  const unansweredQuestionIds = Object.keys(questions).filter(
-    (x) => !answeredQuestionIds.includes(x)
-  );
+  const unansweredQuestionIds = Object.keys(questions)
+    .filter((x) => !answeredQuestionIds.includes(x))
+    .sort((a, b) => questions[b].timestamp - questions[a].timestamp);
   return {
     authedUser,
     answeredQuestionIds,

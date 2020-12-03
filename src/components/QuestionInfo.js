@@ -1,10 +1,6 @@
 import React from "react";
 
-const QuestionInfo = ({ user, question, author, answer }) => {
-  // if (!question) {
-  //   return null;
-  // }
-
+const QuestionInfo = ({ question, author, answer }) => {
   const getTotalVotes = () => {
     return question.optionOne.votes.length + question.optionTwo.votes.length;
   };

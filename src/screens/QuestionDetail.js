@@ -12,12 +12,7 @@ const QuestionDetail = ({ user, question, author, answer }) => {
   return (
     <>
       {answer ? (
-        <QuestionInfo
-          user={user}
-          question={question}
-          author={author}
-          answer={answer}
-        />
+        <QuestionInfo question={question} author={author} answer={answer} />
       ) : (
         <QuestionVote user={user} question={question} author={author} />
       )}

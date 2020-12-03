@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import { logoutUser } from "../actions/authedUser";
 
 const Nav = ({ signedInUser, dispatch }) => {
-  console.log("Signed In User: ", signedInUser);
-
   const handleLogout = () => {
     dispatch(logoutUser());
   };

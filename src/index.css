@@ -98,6 +98,10 @@ a {
   text-align: center;
 }
 
+.m-center {
+  margin: 0 auto;
+}
+
 .flex-container {
   display: flex;
   align-items: center;
@@ -112,6 +116,18 @@ a {
 
 .flex-align-center, .flex-center {
   align-items: center;
+}
+
+.leader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.leader-stats {
+  display: flex;
+  justify-content: space-between;
 }
 
 .screen {
@@ -206,8 +222,12 @@ li {
   max-width: 590px;
   padding: 0px;
   margin: 0 auto;
-  border: 1px solid #bbb;
+  border: 1px solid var(--main-border-color);
   border-radius: 3px;
+}
+
+.no-border {
+  border: none;
 }
 
 .card-section {
@@ -279,6 +299,10 @@ li {
   border-left: 1px solid var(--main-border-color);
 }
 
+.border-bottom {
+  border-bottom: 1px solid var(--main-border-color);
+}
+
 .card-tab.active {
   background-color: #eee;
   color: #00b5ad;
@@ -331,12 +355,24 @@ li {
   padding: 1rem;
 }
 
-.p-0-5 {
+.p-05 {
   padding: 0.5rem;
+}
+
+.pl-05 {
+  padding-left: 0.5rem;
+}
+
+.pr-05 {
+  padding-right: 0.5rem;
 }
 
 .pl-1 {
   padding-left: 1rem;
+}
+
+.pr-1 {
+  padding-right: 1rem;
 }
 
 .plr-1 {
@@ -349,7 +385,16 @@ li {
   padding-right: 20px;
 }
 
+.pt-1 {
+  padding-top: 1rem;
+}
+
 .pb-1 {
+  padding-bottom: 1rem;
+}
+
+.pbt-1 {
+  padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
@@ -411,6 +456,41 @@ li {
   position: absolute;
   top: -1rem;
   right: -1.75rem;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.score-badge {
+  background-color: #00b5ad;
+  color: #fff;
+  margin: 1.2rem 1.7rem;
+  height: 3.2rem;
+  width: 3.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.triangle {
+  position: absolute;
+  border-style: solid;
+  border-width: 3.5rem 3.5rem 0 0;
+  border-color: var(--main-border-color) transparent transparent transparent;
+  top: 0;
+  left: 0;
+}
+
+.trophy {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
 }
 
 .optionOne {
