@@ -29,42 +29,38 @@ export class SignIn extends Component {
     const { users } = this.props;
 
     return (
-      <div className="flex-container">
-        <div className="card center">
-          <div className="card-section bg-gray">
-            <h3>Welcome to the Would You Rather App!</h3>
-            <p>Please sign in to continue</p>
-          </div>
-          <img src="./logo192.png" alt="logo" className="login-logo" />
-          <div className="card-section">
-            <h2 className="ui teal header">Sign in</h2>
-          </div>
-          <div className="card-section">
-            <form className="card-section" onSubmit={this.handleSubmit}>
-              <select
-                className={value ? "" : "placeholder"}
-                value={value}
-                onChange={this.handleChange}
-              >
-                <option className="placeholder" value="">
-                  Select User
-                </option>
-                {users &&
-                  Object.values(users).map((user) => (
-                    <option key={user.id} value={user.id}>
-                      {user.name}
-                    </option>
-                  ))}
-              </select>
+      <div className="card center">
+        <div className="card-hdr">
+          <h3 className="mb-05">Welcome to the Would You Rather App!</h3>
+          <p>Please sign in to continue</p>
+        </div>
+        <div className="p-1">
+          <img src="./logo192.png" alt="logo" className="login-logo p-1 mb-1" />
+          <h2 className="teal font-large mb-1">Sign in</h2>
+          <form className="card-form" onSubmit={this.handleSubmit}>
+            <select
+              className={`mb-1 ${value ? "" : "placeholder"}`}
+              value={value}
+              onChange={this.handleChange}
+            >
+              <option className="placeholder" value="">
+                Select User
+              </option>
+              {users &&
+                Object.values(users).map((user) => (
+                  <option key={user.id} value={user.id}>
+                    {user.name}
+                  </option>
+                ))}
+            </select>
 
-              <button
-                className={`btn-teal btn fluid ${value ? "" : "disabled"}`}
-                disabled={value === ""}
-              >
-                Login
-              </button>
-            </form>
-          </div>
+            <button
+              className={`btn-teal btn fluid ${value ? "" : "disabled"}`}
+              disabled={value === ""}
+            >
+              Login
+            </button>
+          </form>
         </div>
       </div>
     );

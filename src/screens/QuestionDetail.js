@@ -5,14 +5,9 @@ import QuestionVote from "../components/QuestionVote";
 import QuestionInfo from "../components/QuestionInfo";
 
 const QuestionDetail = ({ user, question, author, answer }) => {
-  // if (!authedUser) {
-  //   return <Redirect to="/signin" />;
-  // }
-
-  console.log(`QuestionDetail: user:`, user);
-  console.log(`QuestionDetail: question:`, question);
-  console.log(`QuestionDetail: author:`, author);
-  console.log(`QuestionDetail: answer:`, answer);
+  if (!user) {
+    return <Redirect to="/signin" />;
+  }
 
   return (
     <>

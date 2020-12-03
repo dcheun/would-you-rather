@@ -1,8 +1,12 @@
+:root {
+  --main-border-color: #bbb;
+}
+
 html, body, #root {
   height: 100%;
 }
 
-body, p {
+body, p, ul, h2, h3, a {
   margin: 0;
   padding: 0;
 }
@@ -52,15 +56,28 @@ a {
 .btn-teal {
   background-color: #00B5AD;
   color: #fff;
-  border-radius: 3px;
+  border-radius: 0.3rem;
   border: none;
-  margin: 16px auto;
+  margin: 0;
 }
 
 .btn-teal:hover {
   background-color: #009c95;
   color: #fff;
   text-shadow: none;
+}
+
+.btn-view {
+  color: #00b5ad;
+  border-color: #00b5ad;
+  border-radius: 0.3rem;
+  margin: 0;
+}
+
+.btn-view:hover {
+  color: #fff;
+  background-color: #00b5ad;
+  border-color: #00b5ad;
 }
 
 .btn.fluid {
@@ -89,9 +106,18 @@ a {
   flex-grow: 1;
 }
 
+.flex-justify-center, .flex-center {
+  justify-content: center;
+}
+
+.flex-align-center, .flex-center {
+  align-items: center;
+}
+
 .screen {
   display: flex;
   /* flex-grow: 1; */
+  padding: 2rem;
 }
 
 .active {
@@ -100,7 +126,7 @@ a {
 
 hr {
   margin-top: 0;
-  margin-bottom: 1.5rem;
+  /* margin-bottom: 1.5rem; */
   border-top: 0.2rem solid #00b5ad;
 }
 
@@ -140,7 +166,7 @@ li {
 .avatar {
   height: 50px;
   border-radius: 50%;
-  margin: 10px;
+  /* margin: 10px; */
 }
 
 .nav .avatar {
@@ -159,6 +185,10 @@ li {
   height: 10rem;
 }
 
+.avatar-medium {
+  height: 7rem;
+}
+
 .column {
   max-width: 450px;
 }
@@ -167,10 +197,8 @@ li {
   color: #00B5AD;
 }
 
-
-h2.ui.header {
+.font-large {
   font-size: 1.714rem;
-  margin: 0;
 }
 
 .card {
@@ -178,7 +206,7 @@ h2.ui.header {
   max-width: 590px;
   padding: 0px;
   margin: 0 auto;
-  border: 1px solid #dad7d7;
+  border: 1px solid #bbb;
   border-radius: 3px;
 }
 
@@ -200,7 +228,7 @@ h2.ui.header {
 }
 
 .card.question {
-  min-width: 30rem;
+  /* min-width: 30rem; */
 }
 
 .card-form-container {
@@ -213,15 +241,55 @@ h2.ui.header {
 }
 
 .card-hdr {
+  padding: 1rem;
+  border-bottom: 1px solid var(--main-border-color);
+  background-color: #eee;
+}
+
+/* .card-hdr h2 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+} */
+
+.card-tabs {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card-tab {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid #dad7d7;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--main-border-color);
+  cursor: pointer;
 }
 
-.card-hdr h2 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+.card-tab-left {
+  border-right: 1px solid var(--main-border-color);
+}
+
+.border-right {
+  border-right: 1px solid var(--main-border-color);
+}
+
+.border-left {
+  border-left: 1px solid var(--main-border-color);
+}
+
+.card-tab.active {
+  background-color: #eee;
+  color: #00b5ad;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
 }
 
 .form-text-input {
@@ -245,7 +313,7 @@ h2.ui.header {
 
 .decor-line {
   position: absolute;
-  border: 1px solid #dad7d7;
+  border: 1px solid var(--main-border-color);
   width: 100%;
   z-index: -1;
 }
@@ -253,6 +321,27 @@ h2.ui.header {
 .new-question button {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+.p-0-5 {
+  padding: 0.5rem;
+}
+
+.pl-1 {
+  padding-left: 1rem;
+}
+
+.plr-1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .plr-20 {
@@ -268,13 +357,28 @@ h2.ui.header {
   margin-left: 1rem;
 }
 
-.bg-gray {
-  background-color: #eeeeee;
+.mr-1 {
+  margin-right: 1rem;
 }
 
+.mr-2 {
+  margin-right: 2rem;
+}
 
-#optionOne {
+.bg-gray {
+  background-color: #eee;
+}
+
+.mb-05 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-1 {
   margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
 }
 
 .q-option {
@@ -306,7 +410,11 @@ h2.ui.header {
   align-items: center;
   position: absolute;
   top: -1rem;
-  right: -1rem;
+  right: -1.75rem;
+}
+
+.optionOne {
+  margin-bottom: 1rem;
 }
 
 select {
@@ -314,6 +422,8 @@ select {
   width: 100%;
   font-size: 1.147rem;
   padding: 0.5rem;
+  border-radius: 0.3rem;
+  background-color: #fff;
 }
 
 select option {

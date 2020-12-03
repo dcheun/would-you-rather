@@ -4,10 +4,6 @@ const QuestionInfo = ({ user, question, author, answer }) => {
   // if (!question) {
   //   return null;
   // }
-  // console.log(`QuestionInfo: user:`, user);
-  // console.log(`QuestionInfo: question:`, question);
-  // console.log(`QuestionInfo: author:`, author);
-  // console.log(`QuestionInfo: answer:`, answer);
 
   const getTotalVotes = () => {
     return question.optionOne.votes.length + question.optionTwo.votes.length;
@@ -18,18 +14,20 @@ const QuestionInfo = ({ user, question, author, answer }) => {
   };
 
   return (
-    <div className="card question">
-      <div className="card-section plr-20 bg-gray">
+    <div className="card">
+      <div className="card-hdr">
         <h3>Asked by {author.name}</h3>
       </div>
-      <div className="card-q-body card-section plr-20">
-        <img
-          src={author.avatarURL}
-          alt={`Avatar of ${author.name}`}
-          className="avatar avatar-large"
-        />
-        <div className="ml-1 card-form-container pb-1">
-          <h2>Results:</h2>
+      <div className="flex flex-center p-1">
+        <div>
+          <img
+            src={author.avatarURL}
+            alt={`Avatar of ${author.name}`}
+            className="avatar avatar-large mr-1"
+          />
+        </div>
+        <div className="flex-grow-1 pl-1 border-left">
+          <h2 className="mb-1">Results:</h2>
           {["optionOne", "optionTwo"].map((option) => {
             let q = question[option];
             let numVotes = q.votes.length;
@@ -38,7 +36,9 @@ const QuestionInfo = ({ user, question, author, answer }) => {
               <div
                 key={option}
                 id={option}
-                className={`q-option ${answer === option && "q-option-vote"}`}
+                className={`q-option ${option} ${
+                  answer === option && "q-option-vote"
+                }`}
               >
                 <div
                   className="q-option-vote-badge"
@@ -50,7 +50,9 @@ const QuestionInfo = ({ user, question, author, answer }) => {
                     vote
                   </span>
                 </div>
-                <h3>Would you rather {question[option].text}?</h3>
+                <h3 className="mb-1">
+                  Would you rather {question[option].text}?
+                </h3>
                 <div className="pct-bar">
                   <div className="pct-bar-value" style={{ width: `${pct}%` }}>
                     <p>{numVotes > 0 && `${pct}%`}</p>

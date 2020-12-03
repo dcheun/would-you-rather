@@ -43,13 +43,13 @@ export class NewQuestion extends Component {
     }
 
     return (
-      <div className="card new-question">
-        <div className="card-hdr">
+      <div className="card">
+        <div className="card-hdr center">
           <h2>Create New Question</h2>
         </div>
-        <div className="card-section">
-          <p>Complete the question:</p>
-          <h3>Would you rather...</h3>
+        <div className="p-1">
+          <p className="mb-2">Complete the question:</p>
+          <h3 className="mb-1">Would you rather...</h3>
           <form className="card-form" onSubmit={this.handleSubmit}>
             <input
               className="form-text-input"

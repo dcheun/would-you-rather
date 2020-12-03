@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authedUser";
 
@@ -31,7 +31,7 @@ const Nav = ({ signedInUser, dispatch }) => {
               </NavLink>
             </li>
           </ul>
-          {signedInUser && (
+          {signedInUser ? (
             <ul>
               <li>Hello, {signedInUser.name}</li>
               <li className="avatar-li">
@@ -45,6 +45,14 @@ const Nav = ({ signedInUser, dispatch }) => {
                 <div className="btn-logout" onClick={handleLogout}>
                   Logout
                 </div>
+              </li>
+            </ul>
+          ) : (
+            <ul>
+              <li>
+                <Link to="/signin">
+                  <div>Sign In</div>
+                </Link>
               </li>
             </ul>
           )}

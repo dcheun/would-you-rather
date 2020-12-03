@@ -31,20 +31,20 @@ export class QuestionVote extends Component {
     }
 
     return (
-      <div className="card question">
-        <div className="card-section plr-20 bg-gray">
+      <div className="card">
+        <div className="card-hdr">
           <h3>{author.name} asks:</h3>
         </div>
-        <div className="card-q-body card-section plr-20">
+        <div className="flex flex-center p-1">
           <img
             src={author.avatarURL}
             alt={`Avatar of ${author.name}`}
-            className="avatar avatar-large"
+            className="avatar avatar-large mr-1"
           />
-          <div className="ml-1 card-form-container">
-            <h2>Would You Rather ...</h2>
+          <div className="flex-grow-1 pl-1 border-left">
+            <h2 className="mb-1">Would You Rather ...</h2>
             <form className="card-form" onSubmit={this.handleSubmit}>
-              <div>
+              <div className="mb-1">
                 <input
                   type="radio"
                   id="optionOne"
@@ -54,7 +54,7 @@ export class QuestionVote extends Component {
                 />{" "}
                 {question.optionOne.text}
               </div>
-              <div>
+              <div className="mb-1">
                 <input
                   type="radio"
                   id="optionTwo"
