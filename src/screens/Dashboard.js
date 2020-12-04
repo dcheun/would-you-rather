@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import qs from "qs";
 import QuestionList from "../components/QuestionList";
 
@@ -19,28 +20,32 @@ export class Dashboard extends Component {
 
   handleTabClick = (e) => {
     const { id } = e.target;
-    const { authedUser, history } = this.props;
+    const { history } = this.props;
 
     this.setState(() => ({
       activeTab: id,
     }));
 
-    if (!authedUser && id === "answered") {
-      history.push("/signin");
-    } else {
-      // Setting search query params here so user can
-      // navigate back to the same tab when they hit
-      // the back button from another screen.
-      history.push({
-        pathname: "/",
-        search: `?activeTab=${id}`,
-      });
-    }
+    // Setting search query params here so user can
+    // navigate back to the same tab when they hit
+    // the back button from another screen.
+    history.push({
+      pathname: "/",
+      search: `?activeTab=${id}`,
+    });
   };
 
   render() {
     const { activeTab } = this.state;
-    const { answeredQuestionIds, unansweredQuestionIds } = this.props;
+    const {
+      authedUser,
+      answeredQuestionIds,
+      unansweredQuestionIds,
+    } = this.props;
+
+    if (!authedUser) {
+      return <Redirect to="/signin" />;
+    }
 
     return (
       <div className="card">
@@ -79,11 +84,10 @@ export class Dashboard extends Component {
 
 const mapStateToProps = ({ authedUser, questions, users }, props) => {
   // Parse URL query string for "activeTab"
-  const queryString = qs.parse(props.location.search, {
+  const search = qs.parse(props.location.search, {
     ignoreQueryPrefix: true,
   });
-  const activeTab =
-    queryString.activeTab === "answered" ? "answered" : "unanswered";
+  const activeTab = search.activeTab === "answered" ? "answered" : "unanswered";
 
   // Get lists of authedUser's answered and unanswered questions.
   // Sort by most recent at the top.

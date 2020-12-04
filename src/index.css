@@ -424,6 +424,10 @@ select option {
   color: white;
 }
 
+.not-found {
+  font-size: 5rem;
+}
+
 /************ Margin/Padding Styles ************/
 
 .p-1 {

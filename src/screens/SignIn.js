@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import qs from "qs";
 import { setAuthedUser } from "../actions/authedUser";
 
 export class SignIn extends Component {
@@ -19,10 +20,16 @@ export class SignIn extends Component {
     e.preventDefault();
 
     const { value } = this.state;
-    const { dispatch, history } = this.props;
+    const { qid, dispatch, history } = this.props;
 
     dispatch(setAuthedUser(value));
-    history.push("/");
+    // Navigate to requested question if query string
+    // was provided.
+    if (qid) {
+      history.push(`/questions/${qid}`);
+    } else {
+      history.push("/");
+    }
   };
 
   render() {
@@ -68,9 +75,16 @@ export class SignIn extends Component {
   }
 }
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ users }, props) => {
+  // Parse URL query string for "qid"
+  const search = qs.parse(props.location.search, {
+    ignoreQueryPrefix: true,
+  });
+  const qid = search.qid;
+
   return {
     users,
+    qid,
   };
 };
 

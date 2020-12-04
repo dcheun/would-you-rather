@@ -4,9 +4,13 @@ import { Redirect } from "react-router-dom";
 import QuestionVote from "../components/QuestionVote";
 import QuestionInfo from "../components/QuestionInfo";
 
-const QuestionDetail = ({ authedUser, question, author, answer }) => {
+const QuestionDetail = ({ authedUser, question, author, answer, id }) => {
   if (!authedUser) {
-    return <Redirect to="/signin" />;
+    return <Redirect to={{ pathname: "/signin", search: `?qid=${id}` }} />;
+  }
+
+  if (!question) {
+    return <Redirect to="/pagenotfound" />;
   }
 
   return (
@@ -31,6 +35,7 @@ const mapStateToProps = ({ authedUser, users, questions }, props) => {
     question,
     author,
     answer,
+    id,
   };
 };
 

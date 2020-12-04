@@ -1,8 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import Leader from "../components/Leader";
 
-const Leaderboard = ({ leaders }) => {
+const Leaderboard = ({ authedUser, leaders }) => {
+  if (!authedUser) {
+    return <Redirect to="/signin" />;
+  }
+
   return (
     <div className="card no-border">
       {leaders.map((user, idx) => (
@@ -12,7 +17,7 @@ const Leaderboard = ({ leaders }) => {
   );
 };
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ authedUser, users }) => {
   // Get a list of users sorted by high score.
   // Their score is calculated as the sum of questions
   // answered and created.
@@ -24,6 +29,7 @@ const mapStateToProps = ({ users }) => {
   );
 
   return {
+    authedUser,
     leaders,
   };
 };
