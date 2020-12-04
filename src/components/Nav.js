@@ -56,7 +56,7 @@ const Nav = ({ signedInUser, dispatch }) => {
           )}
         </div>
       </nav>
-      <hr />
+      <hr className="nav-hr" />
     </>
   );
 };

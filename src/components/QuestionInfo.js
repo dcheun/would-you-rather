@@ -14,15 +14,13 @@ const QuestionInfo = ({ question, author, answer }) => {
       <div className="card-hdr">
         <h3>Asked by {author.name}</h3>
       </div>
-      <div className="flex flex-center p-1">
-        <div>
-          <img
-            src={author.avatarURL}
-            alt={`Avatar of ${author.name}`}
-            className="avatar avatar-large mr-1"
-          />
-        </div>
-        <div className="flex-grow-1 pl-1 border-left">
+      <div className="q-flex-container">
+        <img
+          src={author.avatarURL}
+          alt={`Avatar of ${author.name}`}
+          className="avatar avatar-large mr-1"
+        />
+        <div className="q-res-container">
           <h2 className="mb-1">Results:</h2>
           {["optionOne", "optionTwo"].map((option) => {
             let q = question[option];

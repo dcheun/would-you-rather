@@ -26,20 +26,20 @@ const Leader = ({ user, standing }) => {
 
   return (
     <div className="card mb-1">
-      <div className="leader p-1">
+      <div className="leader p-1 flex-res">
         {getStandingTemplate(standing)}
         <img
           src={user.avatarURL}
           alt={`Avatar of ${user.name}`}
           className="avatar avatar-medium mr-1"
         />
-        <div className="flex-grow-1 plr-1 border-left mr-1 border-right">
+        <div className="leader-stats-container">
           <h2 className="mb-1">{user.name}</h2>
-          <div className="leader-stats pbt-1 pr-1 border-bottom">
+          <div className="leader-stats pt-1 pr-1 pb-1 border-bottom">
             <p>Answered questions</p>
             <p>{Object.values(user.answers).length}</p>
           </div>
-          <div className="leader-stats pbt-1 pr-1">
+          <div className="leader-stats pt-1 pr-1 pb-1">
             <p>Created questions</p>
             <p>{user.questions.length}</p>
           </div>

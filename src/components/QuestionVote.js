@@ -35,13 +35,13 @@ export class QuestionVote extends Component {
         <div className="card-hdr">
           <h3>{author.name} asks:</h3>
         </div>
-        <div className="flex flex-center p-1">
+        <div className="q-flex-container">
           <img
             src={author.avatarURL}
             alt={`Avatar of ${author.name}`}
             className="avatar avatar-large mr-1"
           />
-          <div className="flex-grow-1 pl-1 border-left">
+          <div className="q-res-container">
             <h2 className="mb-1">Would You Rather ...</h2>
             <form className="card-form" onSubmit={this.handleSubmit}>
               <div className="mb-1">

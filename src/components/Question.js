@@ -8,13 +8,13 @@ const Question = ({ author, question }) => {
       <div className="card-hdr">
         <h3>{author.name} asks:</h3>
       </div>
-      <div className="flex flex-center p-1">
+      <div className="q-flex-container">
         <img
           src={author.avatarURL}
           alt={`Avatar of ${author.name}`}
           className="avatar avatar-medium ml-1 mr-2"
         />
-        <div className="flex-grow-1 pl-1 border-left">
+        <div className="q-res-container">
           <h3 className="mb-1">Would you rather</h3>
           <p className="mb-1">...{question.optionOne.text.slice(0, 20)}...</p>
           <Link to={`/questions/${question.id}`}>
