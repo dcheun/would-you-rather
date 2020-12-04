@@ -10,6 +10,8 @@ export class Dashboard extends Component {
 
   componentDidMount() {
     const { activeTab } = this.props;
+    // Set the active tab if query string was provided
+    // in the URL.
     this.setState(() => ({
       activeTab,
     }));
@@ -76,12 +78,15 @@ export class Dashboard extends Component {
 }
 
 const mapStateToProps = ({ authedUser, questions, users }, props) => {
+  // Parse URL query string for "activeTab"
   const queryString = qs.parse(props.location.search, {
     ignoreQueryPrefix: true,
   });
   const activeTab =
     queryString.activeTab === "answered" ? "answered" : "unanswered";
 
+  // Get lists of authedUser's answered and unanswered questions.
+  // Sort by most recent at the top.
   const answeredQuestionIds = users[authedUser]
     ? Object.keys(users[authedUser].answers).sort(
         (a, b) => questions[b].timestamp - questions[a].timestamp

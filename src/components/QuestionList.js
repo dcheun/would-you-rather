@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Question from "./Question";
 
 const QuestionList = ({ type, questionIds }) => {
@@ -17,6 +18,11 @@ const QuestionList = ({ type, questionIds }) => {
       )}
     </ul>
   );
+};
+
+QuestionList.propTypes = {
+  type: PropTypes.string.isRequired,
+  questionIds: PropTypes.array.isRequired,
 };
 
 export default QuestionList;

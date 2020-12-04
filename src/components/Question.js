@@ -29,6 +29,7 @@ const Question = ({ author, question }) => {
 const mapStateToProps = ({ questions, users }, { id }) => {
   const question = questions[id];
   const author = users[question?.author];
+
   return {
     author,
     question,

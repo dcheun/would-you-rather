@@ -1,7 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { FaTrophy } from "react-icons/fa";
 
 const Leader = ({ user, standing }) => {
+  // Renders a trophy icon in the upper left
+  // corner for top 3 users with highest scores.
   const getStandingTemplate = (standing) => {
     let color = "brown";
     switch (standing) {
@@ -59,6 +62,11 @@ const Leader = ({ user, standing }) => {
       </div>
     </div>
   );
+};
+
+Leader.propTypes = {
+  user: PropTypes.object.isRequired,
+  standing: PropTypes.number,
 };
 
 export default Leader;

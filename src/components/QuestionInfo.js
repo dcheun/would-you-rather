@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const QuestionInfo = ({ question, author, answer }) => {
   const getTotalVotes = () => {
@@ -62,6 +63,12 @@ const QuestionInfo = ({ question, author, answer }) => {
       </div>
     </div>
   );
+};
+
+QuestionInfo.propTypes = {
+  question: PropTypes.object.isRequired,
+  author: PropTypes.object.isRequired,
+  answer: PropTypes.string.isRequired,
 };
 
 export default QuestionInfo;

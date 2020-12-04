@@ -13,12 +13,16 @@ const Leaderboard = ({ leaders }) => {
 };
 
 const mapStateToProps = ({ users }) => {
+  // Get a list of users sorted by high score.
+  // Their score is calculated as the sum of questions
+  // answered and created.
   const leaders = Object.values(users).sort(
     (a, b) =>
       Object.keys(b.answers).length +
       b.questions.length -
       (Object.keys(a.answers).length + a.questions.length)
   );
+
   return {
     leaders,
   };

@@ -63,6 +63,7 @@ const Nav = ({ signedInUser, dispatch }) => {
 
 const mapStateToProps = ({ authedUser, users }) => {
   const signedInUser = authedUser ? users[authedUser] : null;
+
   return {
     signedInUser,
   };

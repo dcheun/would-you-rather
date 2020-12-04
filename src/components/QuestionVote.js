@@ -1,14 +1,21 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { handleSaveQuestionAnswer } from "../actions/questions";
 
 export class QuestionVote extends Component {
+  static propTypes = {
+    question: PropTypes.object.isRequired,
+    author: PropTypes.object.isRequired,
+  };
+
   state = {
     value: "",
   };
 
   handleChange = (e) => {
     const { value } = e.target;
+
     this.setState(() => ({
       value,
     }));
@@ -24,6 +31,7 @@ export class QuestionVote extends Component {
   };
 
   render() {
+    const { value } = this.state;
     const { question, author } = this.props;
 
     if (!question) {
@@ -64,7 +72,12 @@ export class QuestionVote extends Component {
                 />{" "}
                 {question.optionTwo.text}
               </div>
-              <button className="btn btn-teal fluid">Submit</button>
+              <button
+                className={`btn btn-teal fluid ${value ? "" : "disabled"}`}
+                disabled={value === ""}
+              >
+                Submit
+              </button>
             </form>
           </div>
         </div>
